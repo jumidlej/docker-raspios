@@ -1,17 +1,18 @@
-# Create Docker Image from Raspberry OS .img file on UBuntu 20.04
+# Create Docker Image of Raspberry Pi OS (.img file) on Ubuntu 20.04
 
 1. Download the Raspberry Pi OS file on https://www.raspberrypi.com/software/operating-systems/.
 
-2. Unzip and mount the OS. You can use the command:
+2. Unzip and mount the OS. You can use the following command to mount it on Ubuntu 20.04:
 
 ```
-$ udisksctl loop-setup --file file.img
+$ udisksctl loop-setup --file file_example.img
 ```
 
-3. Go to the root directory and compress the root partition:
+3. The previous command will create loop devices for the partitions in the image and mount them. Check the mount point of the root partition, go to this directory and compress the root partition using the following commands:
 
 ```
-$ cd rootfs
+$ lsblk -p
+$ cd /dir_example/rootfs
 $ sudo tar cvf compressed.tar *
 ```
 
