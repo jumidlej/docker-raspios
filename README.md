@@ -13,11 +13,17 @@ $ udisksctl loop-setup --file file_example.img
 ```
 $ lsblk -p
 $ cd /dir_example/rootfs
-$ sudo tar cvf compressed.tar *
+$ sudo tar cvf /output_dir/compressed.tar *
 ```
 
 4. Docker import the tar file that was created. Docker untars it in the container relative to the / (root).
 
 ```
 $ docker import compressed.tar account/repository:tag
+```
+5. Umount the mounted partitions. 
+
+```
+$ sudo umount /dir_example/rootfs
+$ sudo umount /dir_example/boot
 ```
